@@ -6,12 +6,14 @@ import { environment } from '../../environment';
 @Injectable()
 export class AuthService {
 
-  private authconnectorservice;
+  private authconnectorservice: SessionService;
+  private credentialservice: CredentialService;
 
   constructor(
-    private credentialservice: CredentialService
+
   ) {
     this.authconnectorservice = new SessionService();
+    this.credentialservice = new CredentialService();
     console.log("test 1", this.credentialservice.isAuthenticated(), this.authconnectorservice);
   }
 

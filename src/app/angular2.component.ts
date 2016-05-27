@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupeComponent } from './+groupe';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
-import { AuthService, CredentialService } from './components/auth';
+import { AuthService } from './components';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { AuthService, CredentialService } from './components/auth';
   selector: 'angular2-app',
   templateUrl: 'angular2.component.html',
   styleUrls: ['angular2.component.css'],
-  providers: [ROUTER_PROVIDERS, AuthService, CredentialService],
+  providers: [ROUTER_PROVIDERS, AuthService],
   directives: [ROUTER_DIRECTIVES]
 })
 @Routes([
