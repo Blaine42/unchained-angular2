@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupeComponent } from './+groupe';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
-import { AuthService } from './components';
 
+import { GroupeComponent } from './+groupe';
+import { AuthService, CredentialService } from './components';
 
 @Component({
   moduleId: module.id,
   selector: 'angular2-app',
   templateUrl: 'angular2.component.html',
   styleUrls: ['angular2.component.css'],
-  providers: [ROUTER_PROVIDERS, AuthService],
+  providers: [ROUTER_PROVIDERS, AuthService, CredentialService],
   directives: [ROUTER_DIRECTIVES]
 })
 @Routes([
