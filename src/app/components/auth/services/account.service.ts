@@ -13,11 +13,14 @@ export class AccountService {
   constructor (private http: Http) {}
 
   // URL to web api
-  private heroesUrl = 'app/heroes.json';
+  private heroesUrl = 'account.json';
 
-  getAccount () {
+  getAccount():User {
+    console.log('CredentialService -> getAccount()');
     return this.http.get(this.heroesUrl)
                     .map(this.extractData);
+
+    // return this.http.get(this.heroesUrl).map(res => res.json());
   }
 
   /*addHero (name: string): Promise<User> {

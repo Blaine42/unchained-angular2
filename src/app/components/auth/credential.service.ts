@@ -15,6 +15,8 @@ export class CredentialService {
    */
   private authenticated: boolean = false;
 
+  public identity;
+
   /**
    * constructeur de la classe
    * @param  {AccountService} privateaccount objet correspondant à un compte utilisateur
@@ -26,7 +28,12 @@ export class CredentialService {
     return this.authenticated;
   }
 
-  getAccount() {
-    this.account.getAccount();
+  getAccount(force?: boolean) {
+    console.log('CredentialService -> getAccount()');
+    return this.account.getAccount().subscribe(
+                data => this.identity = JSON.stringify(data), // put the data returned from the server in our variable
+                error => console.log("Error HTTP GET Service"), // in case of failure show this message
+                () => console.log("Job Done Get !")//run this code in all cases
+            );
   }
 }

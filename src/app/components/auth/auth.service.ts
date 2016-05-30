@@ -29,7 +29,8 @@ export class AuthService {
 
   authorize(force?: boolean) {
     //return this.credentialservice.identity(force).then(function() {
-      this.credentialservice.getAccount();
+      this.credentialservice.getAccount(force);
+      console.log('AuthService -> authorize()');
       var isAuthenticated = this.credentialservice.isAuthenticated();
 
       // an authenticated user can't access to login and register pages
