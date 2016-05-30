@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AccountService } from './services/account.service';
 import { Http, Response } from '@angular/http';
+import { User }           from '../user';
 
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
+
 
 
 @Injectable()
@@ -15,7 +15,8 @@ export class CredentialService {
    */
   private authenticated: boolean = false;
 
-  public identity;
+  public identity: User;
+  public errorMessage: string;
 
   /**
    * constructeur de la classe
@@ -28,12 +29,20 @@ export class CredentialService {
     return this.authenticated;
   }
 
-  getAccount(force?: boolean) {
+  getAccount(force?: boolean): Promise<any> {
     console.log('CredentialService -> getAccount()');
-    return this.account.getAccount().subscribe(
-                data => this.identity = JSON.stringify(data), // put the data returned from the server in our variable
-                error => console.log("Error HTTP GET Service"), // in case of failure show this message
-                () => console.log("Job Done Get !")//run this code in all cases
-            );
+
+    // return new Promise((resolve, reject) => resolve(PROPERTIES));
+
+    // return this.account.getAccount().then(
+    //             data => this.identity = JSON.stringify(data), // put the data returned from the server in our variable
+    //             error => console.log("Error HTTP GET Service"), // in case of failure show this message
+    //             () => console.log("Job Done Get !")//run this code in all cases
+    //         );
+
+    return this.account.getAccount().then(
+                       data => this.identity = data,
+                       error =>  this.errorMessage = <any>error/*,
+                       () => console.log(this.identity)*/);
   }
 }

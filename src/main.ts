@@ -4,9 +4,6 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { AccountService } from './app/components/auth'
 import { Angular2AppComponent, environment } from './app/';
 
-import {Observable} from 'rxjs/Rx';
-import 'rxjs/add/operator/map';
-
 if (environment.production) {
   enableProdMode();
 }

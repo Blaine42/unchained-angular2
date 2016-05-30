@@ -3,6 +3,7 @@ import { CredentialService } from './credential.service';
 import { SessionService } from './providers/session.service';
 import { environment } from '../../environment';
 
+
 @Injectable()
 export class AuthService {
   /**
@@ -28,10 +29,14 @@ export class AuthService {
 
 
   authorize(force?: boolean) {
+    console.log('AuthService -> authorize()');
     //return this.credentialservice.identity(force).then(function() {
-      this.credentialservice.getAccount(force);
-      console.log('AuthService -> authorize()');
-      var isAuthenticated = this.credentialservice.isAuthenticated();
+      this.credentialservice.getAccount(force).then(function(test){
+        console.log(test);
+      }
+      );
+
+      // var isAuthenticated = this.credentialservice.isAuthenticated();
 
       // an authenticated user can't access to login and register pages
       /*if (isAuthenticated && $rootScope.toState.parent === 'account' && ($rootScope.toState.name === 'login' || $rootScope.toState.name === 'register')) {

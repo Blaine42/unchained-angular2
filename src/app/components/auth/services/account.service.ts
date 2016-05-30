@@ -4,10 +4,6 @@ import { Http, Response } from '@angular/http';
 import { Headers, RequestOptions } from '@angular/http';
 import { User }           from '../../user';
 
-//import {Observable} from 'rxjs/Rx';
-//import 'rxjs/add/operator/map';
-
-
 @Injectable()
 export class AccountService {
   constructor (private http: Http) {}
@@ -15,12 +11,14 @@ export class AccountService {
   // URL to web api
   private heroesUrl = 'account.json';
 
-  getAccount():User {
-    console.log('CredentialService -> getAccount()');
-    return this.http.get(this.heroesUrl)
-                    .map(this.extractData);
+  getAccount(): Promise<User> {
+    console.log('AccountService -> getAccount()');
+    // return this.http.get(this.heroesUrl).map(this.extractData);
 
-    // return this.http.get(this.heroesUrl).map(res => res.json());
+    return this.http.get(this.heroesUrl)
+                    .toPromise()
+                    .then(this.extractData)
+                    .catch(this.handleError);
   }
 
   /*addHero (name: string): Promise<User> {

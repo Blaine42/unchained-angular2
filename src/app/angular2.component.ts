@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from '@angular/router';
 
+import './rxjs-operators';
+
+
 import { GroupeComponent } from './+groupe';
 import { AuthService, CredentialService } from './components';
 
